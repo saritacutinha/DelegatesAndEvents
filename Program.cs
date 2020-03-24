@@ -10,6 +10,11 @@ namespace DelegatesAndEvents
             WorkPerformedHandler del1 = new WorkPerformedHandler(WorkPerformed1);
             WorkPerformedHandler del2 = new WorkPerformedHandler(WorkPerformed2);
 
+            del1(05, WorkType.Golf);
+            del2(01, WorkType.GenerareReports);
+
+            Console.ReadLine();
+
         }
 
         static void WorkPerformed1(int hours, WorkType workType)
