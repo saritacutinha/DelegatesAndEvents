@@ -19,12 +19,12 @@ namespace DelegatesAndEvents
 
         static void WorkPerformed1(int hours, WorkType workType)
         {
-            Console.WriteLine($"Work Performed1 called");
+            Console.WriteLine($"Work Performed1 called "+hours.ToString());
         }
 
         static void WorkPerformed2(int hours, WorkType workType)
         {
-            Console.WriteLine($"Work Performed2 called");
+            Console.WriteLine($"Work Performed2 called "+ hours.ToString());
         }
 
     }
