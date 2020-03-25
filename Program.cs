@@ -9,10 +9,12 @@ namespace DelegatesAndEvents
         {
 
             Worker worker = new Worker();
-            worker.WorkPerformed += delegate (object sender, WorkPerformedEventArgs e)
-                                    {
-                                        Console.WriteLine($"Hours Worked-" + e.Hours + "WorkType-" + e.WorkType);
-                                    };
+            //worker.WorkPerformed += delegate (object sender, WorkPerformedEventArgs e)
+            //                        {
+            //                            Console.WriteLine($"Hours Worked-" + e.Hours + "WorkType-" + e.WorkType);
+            //                        };
+
+            worker.WorkPerformed += (s, e) => Console.WriteLine($"Hours Worked-" + e.Hours + "WorkType-" + e.WorkType);
             worker.WorkCompleted += worker_WorkCompleted;
             worker.DoWork(05, WorkType.GoToMeetings);
 
