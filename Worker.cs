@@ -4,13 +4,38 @@ using System.Text;
 
 namespace DelegatesAndEvents
 {
-    class Worker
-    {
-        public delegate void WorkPerformedHandler(int hours, WorkType workType);
-        public void doWork(int hours, WorkType work)
+  //public delegate void WorkPerformedHandler(object sender, WorkPerformedEventArgs e);
+   public  class Worker
+    {      
+        
+        public event EventHandler<WorkPerformedEventArgs> WorkPerformed;
+        public event EventHandler WorkCompleted;
+        public void DoWork(int hours, WorkType work)
         {
-            public event WorkPerformedHandler WorkPerformed;
-            public event EventHandler WorkCompleted;
+            for(int i=0; i< hours; i++)
+            {
+                OnWorkPerformed(i + 1, work);
+            }
+            OnWorkCompleted();
+        }
+
+        protected virtual void OnWorkPerformed(int hours, WorkType work)
+        {
+            var del = WorkPerformed as EventHandler<WorkPerformedEventArgs>;
+            if(del!=null)
+            {
+                del(this, new WorkPerformedEventArgs(hours, work));
+            }
+
+        }
+
+        protected virtual void OnWorkCompleted()
+        {
+            var del = WorkCompleted as EventHandler;
+            if (del != null)
+            {
+                del(this, EventArgs.Empty);
+            }
 
         }
     }
