@@ -15,10 +15,13 @@ namespace DelegatesAndEvents
             var data = new ProcessData();
             data.Process(2, 3, addDel);
 
-            Action<int, int> myAction = (x, y) => Console.WriteLine(x + y); 
-            Action<int, int> myMulAction = (x, y) => Console.WriteLine(x * y);
-            data.processAction(2, 3, myAction);
-            
+            //Action<int, int> myAction = (x, y) => Console.WriteLine(x + y); 
+            //Action<int, int> myMulAction = (x, y) => Console.WriteLine(x * y);
+            //data.processAction(2, 3, myAction);
+
+            Func<int, int, int> funcAdd = (x, y) => x + y;
+            Func<int, int, int> funcMul = (x, y) => x * y;
+            data.processFunc(2, 3, funcMul);
             Worker worker = new Worker();
             //worker.WorkPerformed += delegate (object sender, WorkPerformedEventArgs e)
             //                        {
