@@ -2,12 +2,18 @@
 
 namespace DelegatesAndEvents
 {
-    class Program
+    public class Program
     {
+        public delegate int BizRulesDelegate(int x, int y);
+            
 
         static void Main(string[] args)
         {
+            BizRulesDelegate addDel = (x, y) => x + y;
+            BizRulesDelegate mulDel = (x, y) => x * y;
 
+             var data = new ProcessData();
+            data.Process(2,3, addDel);
             Worker worker = new Worker();
             //worker.WorkPerformed += delegate (object sender, WorkPerformedEventArgs e)
             //                        {
