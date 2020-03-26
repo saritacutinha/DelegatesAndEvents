@@ -12,5 +12,11 @@ namespace DelegatesAndEvents
             var result = del(x, y);
             Console.WriteLine(result );
         }
+
+        public void processAction(int x, int y,Action<int,int> action)
+        {
+            action(x, y);
+            Console.WriteLine("Action has been processed");
+        }
     }
 }
